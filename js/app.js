@@ -194,7 +194,7 @@
   async function copySummary() {
     try {
       await navigator.clipboard.writeText(buildSummary());
-      showToast("Rincian disalin!");
+      showToast("Teks disalin!");
     } catch (_) {
       showToast("Gagal menyalin, salin manual ya.");
     }
@@ -237,9 +237,6 @@
   );
 
   $("copyButton").addEventListener("click", copySummary);
-  $("waButton").addEventListener("click", () =>
-    window.open("https://wa.me/?text=" + encodeURIComponent(buildSummary()), "_blank", "noopener")
-  );
 
   $("resetButton").addEventListener("click", () => {
     state = defaultState();

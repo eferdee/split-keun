@@ -8,7 +8,7 @@ Kalkulator patungan untuk makan bareng. Bagi tagihan secara adil per orang, leng
 - **Biaya tambahan:** service (%), pajak (%), dan tip (Rp), dengan preset cepat seperti Restoran 5% + 10%.
 - **Pembulatan per orang:** ke atas dengan kelipatan Rp100, Rp500, atau Rp1.000.
 - **Hasil jelas:** total, rincian subtotal, dan jumlah yang harus dibayar tiap orang.
-- **Bagikan:** salin rincian atau kirim langsung ke WhatsApp.
+- **Salin teks:** satu tombol untuk menyalin rincian patungan, siap ditempel ke chat mana pun.
 - **Tersimpan otomatis:** data tersimpan di localStorage browser.
 - **Mode terang/gelap** dan tampilan responsif untuk mobile.
 

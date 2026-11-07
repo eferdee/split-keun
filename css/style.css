@@ -1,0 +1,202 @@
+/* ==========================================================
+   Design tokens & dark theme (same palette as QR Keun)
+   ========================================================== */
+:root {
+  --bg: #f8f8fc;
+  --surface: #fff;
+  --surface-soft: #f2f0fa;
+  --text: #211d32;
+  --muted: #777388;
+  --line: #e9e6f0;
+  --primary: #7657f6;
+  --primary-dark: #6042df;
+  --warn-bg: #fff4e0;
+  --warn-text: #8a5a00;
+  --shadow: 0 24px 70px rgba(48, 35, 91, 0.1);
+  --radius: 22px;
+  color-scheme: light;
+}
+body.dark {
+  --bg: #11101a;
+  --surface: #1b1927;
+  --surface-soft: #242131;
+  --text: #f5f2ff;
+  --muted: #aaa5bb;
+  --line: #343044;
+  --warn-bg: #3a2f14;
+  --warn-text: #ffd48a;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+  color-scheme: dark;
+}
+
+/* ==========================================================
+   Base
+   ========================================================== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+  transition: background 0.25s, color 0.25s;
+}
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: "Manrope", sans-serif; margin: 0; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);
+}
+
+/* ==========================================================
+   Header & hero
+   ========================================================== */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1080px; margin: 0 auto; padding: 18px 20px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font: 800 20px "Manrope", sans-serif; text-decoration: none; color: inherit;
+}
+.brand-mark {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff; font-size: 20px;
+}
+.brand-period { color: var(--primary); }
+.icon-button {
+  width: 40px; height: 40px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface);
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 20px 60px; }
+.hero { text-align: center; padding: 28px 0 34px; }
+.hero h1 { font-size: clamp(34px, 6vw, 54px); line-height: 1.1; margin: 10px 0 12px; }
+.hero p { max-width: 480px; margin: 0 auto; color: var(--muted); }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--primary); }
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), #c04bf0);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ==========================================================
+   Layout & cards
+   ========================================================== */
+.studio { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+}
+.block { margin-bottom: 24px; }
+.label { display: block; font-weight: 700; margin-bottom: 8px; }
+.hint { margin: -4px 0 10px; font-size: 13px; color: var(--muted); }
+
+/* ==========================================================
+   Form controls
+   ========================================================== */
+.tabs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px;
+  border-radius: 14px; background: var(--surface-soft); margin-bottom: 24px;
+}
+.tab { border: 0; background: transparent; padding: 10px; border-radius: 10px; font-weight: 700; color: var(--muted); }
+.tab.active { background: var(--surface); color: var(--primary); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+
+input, select {
+  width: 100%; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface);
+}
+input:focus, select:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.row { display: flex; gap: 8px; align-items: center; }
+
+.money, .suffix {
+  display: flex; align-items: center; gap: 8px; padding: 0 14px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+}
+.money input, .suffix input { border: 0; padding: 12px 0; outline: 0; background: transparent; }
+.money span, .suffix b { color: var(--muted); font-weight: 600; }
+.money:focus-within, .suffix:focus-within { outline: 2px solid var(--primary); }
+
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.field span { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.presets, .who, .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.presets { margin-top: 12px; }
+.chips { margin-bottom: 10px; }
+
+/* ==========================================================
+   Chips & buttons
+   ========================================================== */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px 6px 14px;
+  border-radius: 999px; background: var(--surface-soft); font-weight: 600; font-size: 14px;
+}
+.chip-x { border: 0; background: transparent; font-size: 18px; line-height: 1; color: var(--muted); padding: 0 6px; }
+.chip-btn {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px;
+  padding: 5px 12px; font-size: 13px; font-weight: 600; color: var(--muted);
+}
+.chip-btn.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+.btn { border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 700; white-space: nowrap; transition: transform 0.15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; }
+.btn-soft { background: var(--surface-soft); color: var(--primary); }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); width: 100%; }
+
+.items { display: grid; gap: 12px; margin-bottom: 12px; }
+.item { padding: 12px; border: 1px solid var(--line); border-radius: 14px; display: grid; gap: 10px; }
+.item .row input:last-of-type { max-width: 130px; }
+
+/* ==========================================================
+   Result card
+   ========================================================== */
+.result { position: sticky; top: 16px; }
+.grand-label { color: var(--muted); margin-top: 6px; }
+.grand { font: 800 40px "Manrope", sans-serif; margin-bottom: 14px; }
+.warning { background: var(--warn-bg); color: var(--warn-text); padding: 10px 14px; border-radius: 12px; font-size: 14px; margin: 0 0 14px; }
+
+.breakdown {
+  display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin: 0 0 20px;
+  padding: 14px; border-radius: 14px; background: var(--surface-soft); font-size: 14px;
+}
+.breakdown dt { color: var(--muted); }
+.breakdown dd { margin: 0; text-align: right; font-weight: 600; }
+
+.result h3 { font-size: 16px; margin-bottom: 8px; }
+.result-list { list-style: none; margin: 0 0 20px; padding: 0; }
+.result-list li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.result-list .name { flex: 1; font-weight: 600; word-break: break-word; }
+.avatar {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--surface-soft); color: var(--primary); font-weight: 800;
+}
+.actions .btn { flex: 1; }
+
+/* ==========================================================
+   Footer & toast
+   ========================================================== */
+.site-footer { text-align: center; padding: 24px 20px 40px; color: var(--muted); font-size: 14px; }
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px);
+  background: #211d32; color: #fff; padding: 10px 18px; border-radius: 12px;
+  opacity: 0; pointer-events: none; transition: 0.25s;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 860px) {
+  .studio { grid-template-columns: 1fr; }
+  .result { position: static; }
+}
+@media (max-width: 480px) {
+  .card { padding: 20px; }
+  .grid3 { grid-template-columns: 1fr; }
+  .actions { flex-direction: column; }
+  .actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

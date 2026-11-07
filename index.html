@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hitung patungan makan bareng dengan mudah: bagi rata atau per item, lengkap dengan pajak, service, dan tip. Gratis dan privat.">
+  <meta property="og:title" content="Split Keun — Patungan tanpa drama">
+  <meta property="og:description" content="Bagi tagihan adil per orang dalam hitungan detik. Tanpa akun, tanpa upload.">
+  <title>Split Keun — Patungan tanpa drama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">
+      <span class="brand-mark" aria-hidden="true">÷</span>
+      <span>split keun<span class="brand-period">.</span></span>
+    </a>
+    <button id="themeToggle" class="icon-button" aria-label="Ganti tema">🌙</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">KALKULATOR PATUNGAN</span>
+      <h1>Patungan tanpa <span class="gradient-text">drama.</span></h1>
+      <p>Bagi rata atau per item, lengkap dengan pajak, service, dan tip. Semua dihitung di browser kamu.</p>
+    </section>
+
+    <div class="studio">
+      <!-- ===== Form ===== -->
+      <section class="card" aria-labelledby="formTitle">
+        <h2 id="formTitle" class="visually-hidden">Data tagihan</h2>
+
+        <div class="tabs" role="tablist" aria-label="Cara bagi">
+          <button class="tab active" data-mode="even" role="tab" aria-selected="true">Bagi rata</button>
+          <button class="tab" data-mode="items" role="tab" aria-selected="false">Per item</button>
+        </div>
+
+        <!-- Peserta -->
+        <div class="block">
+          <label class="label">Peserta</label>
+          <div id="peopleList" class="chips"></div>
+          <form id="personForm" class="row">
+            <input id="personName" type="text" maxlength="20" placeholder="Nama teman, lalu Enter" autocomplete="off">
+            <button class="btn btn-soft" type="submit">Tambah</button>
+          </form>
+        </div>
+
+        <!-- Mode: bagi rata -->
+        <div class="block" id="panelEven">
+          <label class="label" for="totalInput">Total tagihan (sebelum pajak)</label>
+          <div class="money"><span>Rp</span><input id="totalInput" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+        </div>
+
+        <!-- Mode: per item -->
+        <div class="block" id="panelItems" hidden>
+          <label class="label">Daftar item</label>
+          <p class="hint">Ketuk nama untuk memilih siapa yang ikut makan item itu.</p>
+          <div id="itemList" class="items"></div>
+          <button id="addItem" class="btn btn-soft" type="button">+ Tambah item</button>
+        </div>
+
+        <!-- Biaya tambahan -->
+        <div class="block">
+          <label class="label">Biaya tambahan</label>
+          <div class="grid3">
+            <div class="field"><span>Service</span><div class="suffix"><input id="serviceInput" type="number" min="0" max="100" step="0.5" inputmode="decimal" value="0"><b>%</b></div></div>
+            <div class="field"><span>Pajak</span><div class="suffix"><input id="taxInput" type="number" min="0" max="100" step="0.5" inputmode="decimal" value="0"><b>%</b></div></div>
+            <div class="field"><span>Tip</span><div class="suffix"><b>Rp</b><input id="tipInput" type="number" min="0" inputmode="numeric" value="0"></div></div>
+          </div>
+          <div class="presets">
+            <button type="button" class="chip-btn" data-preset="restaurant">Restoran 5% + 10%</button>
+            <button type="button" class="chip-btn" data-preset="pb1">Pajak 10%</button>
+            <button type="button" class="chip-btn" data-preset="none">Tanpa tambahan</button>
+          </div>
+        </div>
+
+        <div class="block">
+          <label class="label" for="roundSelect">Pembulatan per orang</label>
+          <select id="roundSelect">
+            <option value="1">Tanpa pembulatan</option>
+            <option value="100">Ke atas, kelipatan Rp100</option>
+            <option value="500">Ke atas, kelipatan Rp500</option>
+            <option value="1000">Ke atas, kelipatan Rp1.000</option>
+          </select>
+        </div>
+
+        <button id="resetButton" class="btn btn-ghost" type="button">Reset semua</button>
+      </section>
+
+      <!-- ===== Hasil ===== -->
+      <aside class="card result" aria-live="polite">
+        <span class="eyebrow">HASIL</span>
+        <div class="grand-label">Total yang harus dibayar</div>
+        <div id="grandTotal" class="grand">Rp0</div>
+        <p id="warning" class="warning" hidden></p>
+
+        <dl id="breakdown" class="breakdown"></dl>
+
+        <h3>Per orang</h3>
+        <ul id="resultList" class="result-list"></ul>
+
+        <div class="row actions">
+          <button id="copyButton" class="btn btn-primary" type="button">Salin rincian</button>
+          <button id="waButton" class="btn btn-soft" type="button">Kirim ke WhatsApp</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">Dibuat untuk patungan yang adil · <span>© <span id="year"></span> Split Keun</span></footer>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="js/calc.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
